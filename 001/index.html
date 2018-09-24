@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Day 1 - Profile</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <style>
+            *, *:before, *:after {
+                box-sizing: border-box;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                background: #eee;
+            }
+
+            body, button {
+                color: #444;
+                font-family: 'Roboto condensed', sans-serif;
+            }
+
+            .background {
+                display: flex;
+                min-height: 100vh;
+            }
+
+            .container {
+                flex: 0 0 360px;
+                margin: auto;
+                padding: 10px;
+            }
+
+            .screen {
+                background: white;
+                box-shadow: 0 0 20px rgba(0, 0, 0, .05);
+                border-radius: 8px;
+            }
+
+            .profile-detail {
+                position: relative;
+                padding: 30px;
+            }
+
+            .profile-follow {
+                position: absolute;
+                top: 30px;
+                right: 30px;
+            }
+
+            .profile-follow-btn {
+                padding: 10px 25px 8px;
+                background: white;
+                border: none;
+                border-radius: 5px;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, .1);
+                font-size: 12px;
+                font-weight: bold;
+                letter-spacing: 1.2px;
+                cursor: pointer;
+                transition: transform .2s, box-shadow .2s;
+            }
+
+            .profile-follow-btn:hover {
+                transform: translate(0, -2px);
+                box-shadow: 0 16px 30px rgba(0, 0, 0, .1);
+            }
+
+            .profile-picture {
+                width: 60px;
+                height: 60px;
+                border-top-left-radius: 30px;
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+                overflow: hidden;
+                margin-bottom: 30px;
+            }
+
+            .profile-picture-image {
+                width: 100%;
+            }
+
+            .profile-name {
+                font-size: 18px;
+            }
+
+            .profile-location {
+                margin-top: 15px;
+                color: #aaa;
+                font-size: 12px;
+            }
+
+            .profile-description {
+                margin-top: 20px;
+                font-size: 12px;
+                line-height: 20px;
+            }
+
+            .profile-stats {
+                display: flex;
+                justify-content: space-between;
+                padding: 15px 30px;
+                border-top: 1px solid #f5f5f5;
+            }
+
+            .profile-stat {
+                width: 60px;
+                cursor: pointer;
+            }
+
+            .profile-stat-value {
+                font-size: 20px;
+                letter-spacing: -2px;
+            }
+
+            .profile-stat-desc {
+                color: #ddd;
+                font-size: 12px;
+            }
+
+            .profile-albums {
+                position: relative;
+                padding: 30px;
+                border-top: 1px solid #f5f5f5;
+            }
+
+            .profile-albums-menu {
+                position: absolute;
+                top: 30px;
+                right: 30px;
+                color: #ddd;
+                cursor: pointer;
+            }
+
+            .profile-albums-list {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 5px -5px 0;
+            }
+
+            .profile-album {
+                position: relative;
+                flex: 0 0 50%;
+                padding: 5px;
+                cursor: pointer;
+            }
+
+            .profile-album-image {
+                padding-top: 100%;
+                background-size: cover;
+                background-position: center;
+                border-radius: 8px;
+            }
+
+            .profile-album-title {
+                position: absolute;
+                bottom: 10px;
+                left: -5px;
+                min-width: 100px;
+                padding: 4px;
+                background: #fff;
+                border-radius: 5px;
+                text-align: center;
+                transition: transform .2s;
+            }
+
+            .profile-album:hover .profile-album-title {
+                transform: translate(0, -2px);
+            }
+
+            #album-1 {
+                background-image: url(./project-01.jpg);
+            }
+
+            #album-2 {
+                background-image: url(./project-02.jpg);
+            }
+
+            .credits {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                font-family: 'Roboto condensed', sans-serif;
+            }
+
+            .credits-link {
+                display: flex;
+                align-items: center;
+                color: #EC4989;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+            .dribbble {
+                width: 20px;
+                height: 20px;
+                margin: 0 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="background">
+            <div class="container">
+                <div class="screen">
+                    <div class="profile-detail">
+                        <div class="profile-follow">
+                            <button class="profile-follow-btn">FOLLOW</button>
+                        </div>
+                        <div class="profile-picture">
+                            <img class="profile-picture-image" src="./profile.jpg" alt="Profile Picture">
+                        </div>
+                        <div class="profile-name">Krisantus Wanandi</div>
+                        <div class="profile-location">
+                            <i class="fa fa-map-marker-alt"></i>&nbsp;&nbsp;Jakarta
+                        </div>
+                        <div class="profile-description">I'm a Front End Developer with a great love for amazing design and beautiful code.</div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="profile-stat profile-likes">
+                            <div class="profile-stat-value">121k</div>
+                            <div class="profile-stat-desc">LIKES</div>
+                        </div>
+                        <div class="profile-stat profile-followers">
+                            <div class="profile-stat-value">11k</div>
+                            <div class="profile-stat-desc">FOLLOWERS</div>
+                        </div>
+                        <div class="profile-stat profile-following">
+                            <div class="profile-stat-value">988</div>
+                            <div class="profile-stat-desc">FOLLOWING</div>
+                        </div>
+                    </div>
+                    <div class="profile-albums">
+                        <div class="profile-albums-header">
+                            <div class="profile-albums-title">PROJECTS</div>
+                            <div class="profile-albums-menu">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </div>
+                        </div>
+                        <div class="profile-albums-body">
+                            <div class="profile-albums-list">
+                                <div class="profile-album">
+                                    <div class="profile-album-image" id="album-1"></div>
+                                    <div class="profile-album-title">React</div>
+                                </div>
+                                <div class="profile-album">
+                                    <div class="profile-album-image" id="album-2"></div>
+                                    <div class="profile-album-title">Vue</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="credits">
+                    inspired by
+                    <a class="credits-link" href="https://dribbble.com/shots/4053675-Profile-Photo-Editor-Album" target="_blank">
+                        <svg class="dribbble" viewBox="0 0 200 200">
+                            <g stroke="#EC4989" fill="none">
+                                <circle cx="100" cy="100" r="90" stroke-width="20"></circle>
+                                <path d="M62.737004,13.7923523 C105.08055,51.0454853 135.018754,126.906957 141.768278,182.963345" stroke-width="20"></path>
+                                <path d="M10.3787186,87.7261455 C41.7092324,90.9577894 125.850356,86.5317271 163.474536,38.7920951" stroke-width="20"></path>
+                                <path d="M41.3611549,163.928627 C62.9207607,117.659048 137.020642,86.7137169 189.041451,107.858103" stroke-width="20"></path>
+                            </g>
+                        </svg>
+                        Nicola Baldo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
