@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="250px" height="220px" viewBox="0 0 250 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Chart</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Bombom" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Chart">
+            <text id="Apr" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="48.4973145" y="21">Apr</tspan>
+            </text>
+            <text id="May" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="81.9987793" y="21">May</tspan>
+            </text>
+            <text id="Jun" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="118.244629" y="21">Jun</tspan>
+            </text>
+            <text id="Jul" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="154.747559" y="21">Jul</tspan>
+            </text>
+            <text id="Aug" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="187.493164" y="21">Aug</tspan>
+            </text>
+            <text id="Sep" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="222.493164" y="21">Sep</tspan>
+            </text>
+            <text id="$0" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="8" y="125">$0</tspan>
+            </text>
+            <text id="$1K" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="8" y="97">$1K</tspan>
+            </text>
+            <text id="$2K" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="8" y="69">$2K</tspan>
+            </text>
+            <text id="$3K" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="8" y="41">$3K</tspan>
+            </text>
+            <text id="--$1K" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="8" y="152">- $1K</tspan>
+            </text>
+            <text id="--$2K" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="8" y="180">- $2K</tspan>
+            </text>
+            <text id="--$3K" font-family="ArialMT, Arial" font-size="9" font-weight="normal" fill="#C3C3C3">
+                <tspan x="8" y="208">- $3K</tspan>
+            </text>
+            <path d="M46.5,37.5 L238.510362,37.5" id="Line" stroke="#F8F8F8" stroke-linecap="square"></path>
+            <path d="M46.5,65.5 L238.510362,65.5" id="Line" stroke="#F8F8F8" stroke-linecap="square"></path>
+            <path d="M46.5,93.5 L238.510362,93.5" id="Line" stroke="#F8F8F8" stroke-linecap="square"></path>
+            <path d="M46.5,149.5 L238.510362,149.5" id="Line" stroke="#F8F8F8" stroke-linecap="square"></path>
+            <path d="M46.5,177.5 L238.510362,177.5" id="Line" stroke="#F8F8F8" stroke-linecap="square"></path>
+            <path d="M46.5,205.5 L238.510362,205.5" id="Line" stroke="#F8F8F8" stroke-linecap="square"></path>
+            <path d="M53,75.0018845 C53,72.7917047 54.7953562,71 57,71 L57,71 C59.209139,71 61,72.7852131 61,75.0018845 L61,122 L53,122 L53,75.0018845 Z" id="Rectangle" fill="#FF622E"></path>
+            <path d="M53,122 L61,122 L61,186.000159 C61,188.20921 59.2046438,190 57,190 L57,190 C54.790861,190 53,188.216118 53,186.000159 L53,122 Z" id="Rectangle" fill="#133499"></path>
+            <path d="M88,57.9998408 C88,55.7907897 89.7953562,54 92,54 L92,54 C94.209139,54 96,55.7838823 96,57.9998408 L96,122 L88,122 L88,57.9998408 Z" id="Rectangle" fill="#FF622E"></path>
+            <path d="M88,122 L96,122 L96,163.998272 C96,166.208365 94.2046438,168 92,168 L92,168 C89.790861,168 88,166.210864 88,163.998272 L88,122 Z" id="Rectangle" fill="#133499"></path>
+            <path d="M123,68.0094586 C123,65.7950958 124.795356,64 127,64 L127,64 C129.209139,64 131,65.7994254 131,68.0094586 L131,122 L123,122 L123,68.0094586 Z" id="Rectangle" fill="#FF622E"></path>
+            <path d="M123,122 L131,122 L131,155.005197 C131,157.211466 129.204644,159 127,159 L127,159 C124.790861,159 123,157.215413 123,155.005197 L123,122 Z" id="Rectangle" fill="#133499"></path>
+            <path d="M158,80.0017284 C158,77.7916349 159.795356,76 162,76 L162,76 C164.209139,76 166,77.7891365 166,80.0017284 L166,122 L158,122 L158,80.0017284 Z" id="Rectangle" fill="#FF622E"></path>
+            <path d="M158,122 L166,122 L166,163.998272 C166,166.208365 164.204644,168 162,168 L162,168 C159.790861,168 158,166.210864 158,163.998272 L158,122 Z" id="Rectangle" fill="#133499"></path>
+            <path d="M193,50.0057184 C193,47.7934212 194.795356,46 197,46 L197,46 C199.209139,46 201,47.7851831 201,50.0057184 L201,122 L193,122 L193,50.0057184 Z" id="Rectangle" fill="#FF622E"></path>
+            <path d="M193,122 L201,122 L201,140.993706 C201,143.206321 199.204644,145 197,145 L197,145 C194.790861,145 193,143.214367 193,140.993706 L193,122 Z" id="Rectangle" fill="#133499"></path>
+            <path d="M227,43.9966302 C227,41.7893523 228.795356,40 231,40 L231,40 C233.209139,40 235,41.7889462 235,43.9966302 L235,122 L227,122 L227,43.9966302 Z" id="Rectangle" fill="#FF622E"></path>
+            <path d="M227,122 L235,122 L235,155.005197 C235,157.211466 233.204644,159 231,159 L231,159 C228.790861,159 227,157.215413 227,155.005197 L227,122 Z" id="Rectangle" fill="#133499"></path>
+        </g>
+    </g>
+</svg>
