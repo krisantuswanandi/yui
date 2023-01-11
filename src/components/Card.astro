@@ -1,0 +1,25 @@
+---
+export interface Props {
+  id: number;
+}
+
+const { id } = Astro.props;
+const name = id.toString().padStart(2, "0");
+const title = `No. ${name}`;
+---
+
+<div class="@7xl:w-2/12 @3xl:w-3/12 @lg:w-4/12 @xs:w-6/12 p-[2px]">
+  <a
+    class="group relative block"
+    target="_blank"
+    href={`./${name}/index.html`}
+    title={title}
+  >
+    <div
+      class="invisible group-hover:visible grid place-items-center absolute top-0 left-0 right-0 bottom-0 bg-black opacity-40 text-gray-400"
+    >
+      {title}
+    </div>
+    <img class="block" src={`./${name}/preview.jpg`} alt={title} />
+  </a>
+</div>

@@ -1,3 +1,3 @@
-# Alpha
+# YUI - (Not) Daily UI Challenge
 
-100 Days of UI Challenge
+ Collections of my failed attempts at daily UI challenge
