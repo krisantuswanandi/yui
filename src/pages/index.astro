@@ -4,6 +4,8 @@ import Card from "../components/Card.astro";
 
 const title = "YUI";
 const desc = "(Not) Daily UI Challenge";
+const pages = await Astro.glob("../pages/**/index.astro");
+const totalItems = 14;
 ---
 
 <Layout title={`${title} - ${desc}`}>
@@ -15,8 +17,30 @@ const desc = "(Not) Daily UI Challenge";
   </div>
   <div class="@container flex flex-wrap p-[2px] 2xs:pl-52">
     {
-      [...Array(14).keys()].map((id) => {
-        return <Card id={id + 1} />;
+      pages
+        .filter((page) => !!page.url)
+        .map((page) => {
+          const url = page.url!;
+          const id = url.replace("/yui/", "");
+          return (
+            <Card
+              title={`No. ${id}`}
+              url={url}
+              image={`/src/pages/${id}/preview.jpg`}
+            />
+          );
+        })
+    }
+    {
+      [...Array(totalItems - pages.length).keys()].map((i) => {
+        const id = `${i + pages.length + 1}`.padStart(2, "0");
+        return (
+          <Card
+            title={`No. 0${id}`}
+            url={`/yui/${id}/index.html`}
+            image={`/yui/${id}/preview.jpg`}
+          />
+        );
       })
     }
   </div>
