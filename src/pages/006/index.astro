@@ -1,0 +1,273 @@
+---
+import { Image } from "astro:assets";
+import gallery1 from "./gallery-01.jpg";
+import gallery2 from "./gallery-02.jpg";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Day 6 - Gallery</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <style>
+      .body {
+        background: #eeeff1;
+        line-height: 1.2;
+      }
+
+      .body,
+      button {
+        color: #444;
+        font-family: serif;
+      }
+
+      .background {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .container {
+        position: relative;
+        flex: 0 0 320px;
+        margin: auto;
+        padding: 10px;
+      }
+
+      .screen {
+        position: relative;
+        height: 500px;
+        background: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .screen-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+      }
+
+      .screen-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        padding: 15px 20px;
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 1),
+            rgba(255, 255, 255, 0) 100%
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 1),
+            rgba(255, 255, 255, 0) 100%
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 1),
+            rgba(255, 255, 255, 0) 100%
+          );
+      }
+
+      .screen-header-left {
+        margin-right: auto;
+      }
+
+      .button-header {
+        background: none;
+        border: none;
+        padding: 0;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .screen-scrollable {
+        height: 100%;
+        padding: 20px;
+        overflow: auto;
+      }
+
+      .app-header {
+        padding: 150px 0;
+        text-align: center;
+      }
+
+      .app-logo {
+        font-size: 30px;
+        letter-spacing: 1.5px;
+      }
+
+      .app-tagline {
+        margin-top: 20px;
+        color: #aaa;
+        font-family: sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+
+      .gallery {
+        margin-bottom: 20px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.07);
+        cursor: pointer;
+      }
+
+      .gallery-detail {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .gallery-title {
+        margin-right: 10px;
+        padding-right: 10px;
+        border-right: 2px solid #eee;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      .gallery-author {
+        font-family: sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        color: #ccc;
+        letter-spacing: 1.5px;
+      }
+
+      .gallery-image {
+        display: block;
+        width: 100%;
+      }
+
+      .app-footer {
+        padding: 20px;
+      }
+
+      .separator {
+        width: 40px;
+        height: 2px;
+        margin: auto;
+        background: #ddd;
+      }
+
+      .credits {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        font-family: "Roboto Condensed", sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+      }
+
+      .credits-link {
+        display: flex;
+        align-items: center;
+        color: #ec4989;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .dribbble {
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+      }
+    </style>
+  </head>
+  <body class="body">
+    <div class="background">
+      <div class="container">
+        <div class="screen">
+          <div class="screen-wrapper">
+            <div class="screen-header">
+              <div class="screen-header-left">
+                <button class="button-header button-menu">
+                  <i class="material-icons">menu</i>
+                </button>
+              </div>
+              <div class="screen-header-right">
+                <button class="button-header button-search">
+                  <i class="material-icons">search</i>
+                </button>
+              </div>
+            </div>
+            <div class="screen-scrollable">
+              <div class="app-header">
+                <div class="app-logo">photocopy.</div>
+                <div class="app-tagline">STOCK PHOTOS</div>
+              </div>
+              <div class="app-body">
+                <div class="galleries">
+                  <div class="gallery">
+                    <div class="gallery-detail">
+                      <div class="gallery-title">Landscape</div>
+                      <div class="gallery-author">1,386 PHOTOS</div>
+                    </div>
+                    <div class="gallery-cover">
+                      <Image class="gallery-image" src={gallery1} alt="Image" />
+                    </div>
+                  </div>
+                  <div class="gallery">
+                    <div class="gallery-detail">
+                      <div class="gallery-title">Potrait</div>
+                      <div class="gallery-author">245 PHOTOS</div>
+                    </div>
+                    <div class="gallery-cover">
+                      <Image class="gallery-image" src={gallery2} alt="Image" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="app-footer">
+                <div class="separator"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="credits">
+          inspired by
+          <a
+            class="credits-link"
+            href="https://dribbble.com/shots/3216948-Stock-Image-Website"
+            target="_blank"
+          >
+            <svg class="dribbble" viewBox="0 0 200 200">
+              <g stroke="#EC4989" fill="none">
+                <circle cx="100" cy="100" r="90" stroke-width="20"></circle>
+                <path
+                  d="M62.737004,13.7923523 C105.08055,51.0454853 135.018754,126.906957 141.768278,182.963345"
+                  stroke-width="20"></path>
+                <path
+                  d="M10.3787186,87.7261455 C41.7092324,90.9577894 125.850356,86.5317271 163.474536,38.7920951"
+                  stroke-width="20"></path>
+                <path
+                  d="M41.3611549,163.928627 C62.9207607,117.659048 137.020642,86.7137169 189.041451,107.858103"
+                  stroke-width="20"></path>
+              </g>
+            </svg>
+            Anton Chandra
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
