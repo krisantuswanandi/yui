@@ -1,0 +1,744 @@
+---
+import { Image } from "astro:assets";
+import authorImage from "./author.jpg";
+import book11 from "./book-1-01.jpg";
+import book12 from "./book-1-02.jpg";
+import book13 from "./book-1-03.jpg";
+import book14 from "./book-1-04.jpg";
+import book21 from "./book-2-01.jpg";
+import book22 from "./book-2-02.jpg";
+import book23 from "./book-2-03.jpg";
+import book24 from "./book-2-04.jpg";
+import book25 from "./book-2-05.jpg";
+import logoDark from "./logo-dark.svg";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Day 5 - Bookstore</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <style>
+      .body {
+        background: #eeeff1;
+        line-height: 1.2;
+      }
+
+      .body,
+      button {
+        color: #444;
+        font-family: serif;
+      }
+
+      .background {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .container {
+        position: relative;
+        flex: 0 0 320px;
+        margin: auto;
+        padding: 10px;
+      }
+
+      .screen {
+        position: relative;
+        height: 500px;
+        background: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .screen-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+      }
+
+      .screen-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .screen-footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
+
+      .screen-scrollable {
+        height: 100%;
+        overflow: auto;
+      }
+
+      .book-app-header {
+        display: flex;
+        padding: 15px 10px;
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 1),
+            rgba(255, 255, 255, 0) 100%
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 1),
+            rgba(255, 255, 255, 0) 100%
+          );
+      }
+
+      .book-app-header-left {
+        margin-right: auto;
+      }
+
+      .book-app-header-right .button-header {
+        margin-left: 10px;
+      }
+
+      .book-app-logo {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+
+      .book-app-logo-image {
+        width: 30px;
+      }
+
+      .books-container {
+        margin-top: 20px;
+      }
+
+      .books-container:first-of-type {
+        margin-top: 0;
+      }
+
+      .books-header {
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .books-body {
+        display: flex;
+        padding: 0 10px;
+        overflow: auto;
+      }
+
+      .book {
+        flex: 0 0 100px;
+        width: 100px;
+        margin-right: 10px;
+        font-family: sans-serif;
+        cursor: pointer;
+      }
+
+      .book-cover {
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+        border: 2px solid #fff;
+        border-radius: 3px;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .book:hover .book-cover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: translate(0, -1px);
+      }
+
+      .book-cover-image {
+        display: block;
+        width: 100%;
+        border-radius: 3px;
+      }
+
+      .book-title {
+        margin-top: 8px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .book-author {
+        margin-top: 3px;
+        color: #888;
+        font-size: 10px;
+      }
+
+      .book-price {
+        margin-top: 6px;
+        font-size: 11px;
+        font-weight: bold;
+      }
+
+      .books-separator {
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+      }
+
+      .books-separator > .separator {
+        background: orange;
+        width: 40px;
+        height: 2px;
+      }
+
+      .book-item-top {
+        height: 150px;
+        background: #eee;
+      }
+
+      .book-item-detail {
+        display: flex;
+        margin-top: -90px;
+      }
+
+      .book-item-detail-left {
+        padding: 0 10px;
+      }
+
+      .book-item-cover {
+        width: 120px;
+        border: 2px solid #fff;
+        border-radius: 3px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .book-item-detail-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .book-item-title {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      .book-item-author {
+        margin-top: 10px;
+        flex: 1;
+      }
+
+      .book-item-author-detail {
+        display: flex;
+        align-items: center;
+      }
+
+      .book-item-author-picture {
+        width: 30px;
+        margin-right: 5px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .book-item-author-name {
+        flex: 1;
+        font-weight: bold;
+      }
+
+      .author-review {
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+        font-size: 12px;
+      }
+
+      .author-review .material-icons {
+        color: gold;
+        font-size: 16px;
+      }
+
+      .author-rating {
+        margin-left: 5px;
+        color: #aaa;
+      }
+
+      .book-item-body {
+        margin-top: 10px;
+        padding: 10px;
+      }
+
+      .tab-bar {
+        display: flex;
+        border-bottom: 1px solid #eee;
+      }
+
+      .tab {
+        margin-right: 10px;
+        margin-bottom: -1px;
+        padding: 5px 8px;
+        color: #aaa;
+        cursor: pointer;
+      }
+
+      .tab:hover {
+        color: #777;
+      }
+
+      .tab.active {
+        color: #000;
+        border-bottom: 3px solid orange;
+      }
+
+      .book-item-desc {
+        margin-top: 20px;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .book-item-recommendation {
+        margin-bottom: 70px;
+      }
+
+      .book-item-footer {
+        display: flex;
+        padding: 10px;
+        background: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        font-family: sans-serif;
+      }
+
+      .book-item-price {
+        padding: 3px;
+        font-size: 26px;
+        font-weight: bold;
+      }
+
+      .book-item-button {
+        margin-left: auto;
+      }
+
+      .button-header {
+        background: none;
+        border: none;
+        padding: 0;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .button-back {
+        transition: transform 0.2s;
+      }
+
+      .button-back:hover {
+        transform: translate(-2px, 0);
+      }
+
+      .button-buy {
+        padding: 10px 20px;
+        background: #4f535f;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        color: white;
+        font-family: sans-serif;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .button-seemore {
+        color: #428ff4;
+        cursor: pointer;
+      }
+
+      .button-seemore:hover {
+        text-decoration: underline;
+      }
+
+      .ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .credits {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        font-family: "Roboto Condensed", sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+      }
+
+      .credits-link {
+        display: flex;
+        align-items: center;
+        color: #ec4989;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .dribbble {
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+      }
+    </style>
+  </head>
+  <body class="body">
+    <div class="background">
+      <div class="container">
+        <div class="screen">
+          <div class="screen-wrapper" id="screen-list">
+            <div class="screen-scrollable">
+              <div class="book-app-logo">
+                <Image
+                  class="book-app-logo-image"
+                  src={logoDark}
+                  alt="Bookstore"
+                />
+              </div>
+              <div class="books-container">
+                <div class="books-header">New Releases</div>
+                <div class="books-body">
+                  <div class="book">
+                    <div class="book-cover">
+                      <Image
+                        class="book-cover-image"
+                        src={book21}
+                        alt="The Screaming Staircase"
+                      />
+                    </div>
+                    <div class="book-title ellipsis">
+                      The Screaming Staircase
+                    </div>
+                    <div class="book-author ellipsis">Jonathan Stroud</div>
+                    <div class="book-price">$10.99</div>
+                  </div>
+                  <div class="book">
+                    <div class="book-cover">
+                      <Image
+                        class="book-cover-image"
+                        src={book22}
+                        alt="The Whispering Skull"
+                      />
+                    </div>
+                    <div class="book-title ellipsis">The Whispering Skull</div>
+                    <div class="book-author ellipsis">Jonathan Stroud</div>
+                    <div class="book-price">$10.99</div>
+                  </div>
+                  <div class="book">
+                    <div class="book-cover">
+                      <Image
+                        class="book-cover-image"
+                        src={book23}
+                        alt="The Hollow Boy"
+                      />
+                    </div>
+                    <div class="book-title ellipsis">The Hollow Boy</div>
+                    <div class="book-author ellipsis">Jonathan Stroud</div>
+                    <div class="book-price">$11.99</div>
+                  </div>
+                  <div class="book">
+                    <div class="book-cover">
+                      <Image
+                        class="book-cover-image"
+                        src={book24}
+                        alt="The Creeping Shadow"
+                      />
+                    </div>
+                    <div class="book-title ellipsis">The Creeping Shadow</div>
+                    <div class="book-author ellipsis">Jonathan Stroud</div>
+                    <div class="book-price">$11.99</div>
+                  </div>
+                  <div class="book">
+                    <div class="book-cover">
+                      <Image
+                        class="book-cover-image"
+                        src={book25}
+                        alt="The Empty Grave"
+                      />
+                    </div>
+                    <div class="book-title ellipsis">The Empty Grave</div>
+                    <div class="book-author ellipsis">Jonathan Stroud</div>
+                    <div class="book-price">$10.99</div>
+                  </div>
+                </div>
+              </div>
+              <div class="books-container">
+                <div class="books-header">Best Sellers</div>
+                <div class="books-body">
+                  <div class="book">
+                    <div class="book-cover">
+                      <Image
+                        class="book-cover-image"
+                        src={book11}
+                        alt="The Amulet of Samarkand"
+                      />
+                    </div>
+                    <div class="book-title ellipsis">
+                      The Amulet of Samarkand
+                    </div>
+                    <div class="book-author ellipsis">Jonathan Stroud</div>
+                    <div class="book-price">$10.99</div>
+                  </div>
+                  <div class="book">
+                    <div class="book-cover">
+                      <Image
+                        class="book-cover-image"
+                        src={book12}
+                        alt="The Golem's Eye"
+                      />
+                    </div>
+                    <div class="book-title ellipsis">The Golem's Eye</div>
+                    <div class="book-author ellipsis">Jonathan Stroud</div>
+                    <div class="book-price">$10.99</div>
+                  </div>
+                  <div class="book">
+                    <div class="book-cover">
+                      <Image
+                        class="book-cover-image"
+                        src={book13}
+                        alt="Ptolemy's Gate"
+                      />
+                    </div>
+                    <div class="book-title ellipsis">Ptolemy's Gate</div>
+                    <div class="book-author ellipsis">Jonathan Stroud</div>
+                    <div class="book-price">$10.99</div>
+                  </div>
+                  <div class="book">
+                    <div class="book-cover">
+                      <Image
+                        class="book-cover-image"
+                        src={book14}
+                        alt="The Ring of Solomon"
+                      />
+                    </div>
+                    <div class="book-title ellipsis">The Ring of Solomon</div>
+                    <div class="book-author ellipsis">Jonathan Stroud</div>
+                    <div class="book-price">$10.99</div>
+                  </div>
+                </div>
+              </div>
+              <div class="books-separator">
+                <div class="separator"></div>
+              </div>
+            </div>
+          </div>
+          <div class="screen-wrapper hidden" id="screen-detail">
+            <div class="screen-header">
+              <div class="book-app-header">
+                <div class="book-app-header-left">
+                  <button class="button-header button-back" id="btn-back">
+                    <i class="material-icons">arrow_back</i>
+                  </button>
+                </div>
+                <div class="book-app-header-right">
+                  <button class="button-header">
+                    <i class="material-icons">share</i>
+                  </button>
+                  <button class="button-header button-favorite">
+                    <i class="material-icons">favorite_border</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="screen-footer">
+              <div class="book-item-footer">
+                <div class="book-item-price">$10.99</div>
+                <div class="book-item-button">
+                  <button class="button-buy">Buy Now</button>
+                </div>
+              </div>
+            </div>
+            <div class="screen-scrollable">
+              <div class="book-item-header">
+                <div class="book-item-top"></div>
+                <div class="book-item-detail">
+                  <div class="book-item-detail-left">
+                    <Image
+                      class="book-item-cover"
+                      src={book21}
+                      alt="The Screaming Staircase"
+                    />
+                  </div>
+                  <div class="book-item-detail-right">
+                    <div class="book-item-title">The Screaming Staircase</div>
+                    <div class="book-item-author">
+                      <div class="book-item-author-detail">
+                        <Image
+                          class="book-item-author-picture"
+                          src={authorImage}
+                          alt="Jonathan Stroud"
+                        />
+                        <span class="book-item-author-name"
+                          >Jonathan Stroud</span
+                        >
+                      </div>
+
+                      <div class="author-review">
+                        <div class="author-stars">
+                          <i class="material-icons">star</i>
+                          <i class="material-icons">star</i>
+                          <i class="material-icons">star</i>
+                          <i class="material-icons">star</i>
+                          <i class="material-icons">star</i>
+                        </div>
+                        <div class="author-rating">4.45</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="book-item-body">
+                <div class="tab-bar">
+                  <div class="tab active">Info</div>
+                  <div class="tab">234 Reviews</div>
+                </div>
+                <div class="tab-content">
+                  <div class="book-item-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Quisque eros ipsum, dictum vel ex ac, dictum tincidunt odio.
+                    Maecenas ornare ipsum eu nibh convallis ullamcorper.
+                    Pellentesque sit amet pretium sapien. Etiam massa enim,
+                    molestie ut consectetur vel, tristique quis libero.
+                    <span class="button-seemore">see more</span>
+                  </div>
+                </div>
+              </div>
+              <div class="book-item-recommendation">
+                <div class="books-container">
+                  <div class="books-header">Recommendations</div>
+                  <div class="books-body">
+                    <div class="book">
+                      <div class="book-cover">
+                        <Image
+                          class="book-cover-image"
+                          src={book21}
+                          alt="The Screaming Staircase"
+                        />
+                      </div>
+                      <div class="book-title ellipsis">
+                        The Screaming Staircase
+                      </div>
+                      <div class="book-author ellipsis">Jonathan Stroud</div>
+                      <div class="book-price">$10.99</div>
+                    </div>
+                    <div class="book">
+                      <div class="book-cover">
+                        <Image
+                          class="book-cover-image"
+                          src={book22}
+                          alt="The Whispering Skull"
+                        />
+                      </div>
+                      <div class="book-title ellipsis">
+                        The Whispering Skull
+                      </div>
+                      <div class="book-author ellipsis">Jonathan Stroud</div>
+                      <div class="book-price">$10.99</div>
+                    </div>
+                    <div class="book">
+                      <div class="book-cover">
+                        <Image
+                          class="book-cover-image"
+                          src={book23}
+                          alt="The Hollow Boy"
+                        />
+                      </div>
+                      <div class="book-title ellipsis">The Hollow Boy</div>
+                      <div class="book-author ellipsis">Jonathan Stroud</div>
+                      <div class="book-price">$11.99</div>
+                    </div>
+                    <div class="book">
+                      <div class="book-cover">
+                        <Image
+                          class="book-cover-image"
+                          src={book24}
+                          alt="The Creeping Shadow"
+                        />
+                      </div>
+                      <div class="book-title ellipsis">The Creeping Shadow</div>
+                      <div class="book-author ellipsis">Jonathan Stroud</div>
+                      <div class="book-price">$11.99</div>
+                    </div>
+                    <div class="book">
+                      <div class="book-cover">
+                        <Image
+                          class="book-cover-image"
+                          src={book25}
+                          alt="The Empty Grave"
+                        />
+                      </div>
+                      <div class="book-title ellipsis">The Empty Grave</div>
+                      <div class="book-author ellipsis">Jonathan Stroud</div>
+                      <div class="book-price">$10.99</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="credits">
+          inspired by
+          <a
+            class="credits-link"
+            href="https://dribbble.com/shots/4821904-Online-Book-Store-Manetho-App-Redesign-Project"
+            target="_blank"
+          >
+            <svg class="dribbble" viewBox="0 0 200 200">
+              <g stroke="#EC4989" fill="none">
+                <circle cx="100" cy="100" r="90" stroke-width="20"></circle>
+                <path
+                  d="M62.737004,13.7923523 C105.08055,51.0454853 135.018754,126.906957 141.768278,182.963345"
+                  stroke-width="20"></path>
+                <path
+                  d="M10.3787186,87.7261455 C41.7092324,90.9577894 125.850356,86.5317271 163.474536,38.7920951"
+                  stroke-width="20"></path>
+                <path
+                  d="M41.3611549,163.928627 C62.9207607,117.659048 137.020642,86.7137169 189.041451,107.858103"
+                  stroke-width="20"></path>
+              </g>
+            </svg>
+            Dannniel
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const list = document.getElementById("screen-list") as HTMLElement;
+    const detail = document.getElementById("screen-detail") as HTMLElement;
+    const back = document.getElementById("btn-back") as HTMLElement;
+
+    document.querySelectorAll(".book").forEach(function (item) {
+      item.addEventListener("click", function () {
+        list.classList.add("hidden");
+        detail.classList.remove("hidden");
+      });
+    });
+
+    back.addEventListener("click", function () {
+      list.classList.remove("hidden");
+      detail.classList.add("hidden");
+    });
+  </script>
+</html>
