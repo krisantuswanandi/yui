@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import recipe0 from "./recipe-00.jpg";
-import recipe1 from "./recipe-01.jpg";
-import recipe2 from "./recipe-02.jpg";
-import recipe3 from "./recipe-03.jpg";
-import user1 from "./user-01.jpg";
-import user2 from "./user-02.jpg";
-import user3 from "./user-03.jpg";
+import recipe1 from "./_images/recipe-01.jpg";
+import recipe2 from "./_images/recipe-02.jpg";
+import recipe3 from "./_images/recipe-03.jpg";
+import user1 from "./_images/user-01.jpg";
+import user2 from "./_images/user-02.jpg";
+import user3 from "./_images/user-03.jpg";
+import "../../styles/global.css";
 ---
 
 <!doctype html>
@@ -79,7 +79,8 @@ import user3 from "./user-03.jpg";
 
       #screen-list .screen-header {
         height: 190px;
-        background: radial-gradient(
+        background:
+          radial-gradient(
             circle 250px at 80% -15%,
             rgba(255, 255, 255, 0.15) 0%,
             rgba(255, 255, 255, 0.15) 50%,
@@ -105,10 +106,10 @@ import user3 from "./user-03.jpg";
 
       #screen-detail .screen-header {
         height: 280px;
-        background-image: url(./recipe-00.jpg);
+        background-image: url(./_images/recipe-00.jpg);
         background-size: cover;
         background-position: center;
-        z-index: -1;
+        z-index: 0;
       }
 
       #screen-detail {

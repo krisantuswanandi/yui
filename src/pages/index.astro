@@ -1,11 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import type { AstroInstance } from "astro";
 
 const title = "YUI";
 const desc = "(Not) Daily UI Challenge";
-const pages = await Astro.glob("../pages/**/index.astro");
-const totalItems = 14;
+const matches = import.meta.glob<AstroInstance>("../pages/**/index.astro", {
+  eager: true,
+});
+const pages = Object.values(matches);
 ---
 
 <Layout title={`${title} - ${desc}`}>
@@ -26,22 +29,10 @@ const totalItems = 14;
             <Card
               title={`No. ${id}`}
               url={url}
-              image={`/src/pages/${id}/preview.jpg`}
+              image={`/src/pages/${id}/_images/preview.jpg`}
             />
           );
         })
-    }
-    {
-      [...Array(totalItems - pages.length).keys()].map((i) => {
-        const id = `${i + pages.length + 1}`.padStart(2, "0");
-        return (
-          <Card
-            title={`No. 0${id}`}
-            url={`/yui/${id}/index.html`}
-            image={`/yui/${id}/preview.jpg`}
-          />
-        );
-      })
     }
   </div>
 </Layout>

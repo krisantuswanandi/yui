@@ -1,16 +1,17 @@
 ---
 import { Image } from "astro:assets";
-import authorImage from "./author.jpg";
-import book11 from "./book-1-01.jpg";
-import book12 from "./book-1-02.jpg";
-import book13 from "./book-1-03.jpg";
-import book14 from "./book-1-04.jpg";
-import book21 from "./book-2-01.jpg";
-import book22 from "./book-2-02.jpg";
-import book23 from "./book-2-03.jpg";
-import book24 from "./book-2-04.jpg";
-import book25 from "./book-2-05.jpg";
-import logoDark from "./logo-dark.svg";
+import authorImage from "./_images/author.jpg";
+import book11 from "./_images/book-1-01.jpg";
+import book12 from "./_images/book-1-02.jpg";
+import book13 from "./_images/book-1-03.jpg";
+import book14 from "./_images/book-1-04.jpg";
+import book21 from "./_images/book-2-01.jpg";
+import book22 from "./_images/book-2-02.jpg";
+import book23 from "./_images/book-2-03.jpg";
+import book24 from "./_images/book-2-04.jpg";
+import book25 from "./_images/book-2-05.jpg";
+import logoDark from "./_images/logo-dark.svg";
+import "../../styles/global.css";
 ---
 
 <!doctype html>
@@ -95,7 +96,8 @@ import logoDark from "./logo-dark.svg";
       .book-app-header {
         display: flex;
         padding: 15px 10px;
-        background: linear-gradient(
+        background:
+          linear-gradient(
             to bottom,
             rgba(255, 255, 255, 1),
             rgba(255, 255, 255, 0) 100%
